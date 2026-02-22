@@ -167,12 +167,87 @@ print(sum_of_even(6))
 Exercise: Level 2
 
 1. Declare a function named evens_and_odds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
-"""
 
 def even_and_odds(nums):
+    total_evens = 0
+    total_odds = 0
     for x in range(nums):
         if x % 2 == 0:
-            x += x
-    return x 
+            total_evens += 1
+        if x % 2 == 1:
+            total_odds += 1
+    return (f"The number of evens are {total_evens}. \n The number of odds are {total_odds}.")
 
-print(even_and_odds(100))
+print(even_and_odds(33))
+"""
+
+"""
+2. Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+
+def factorial(num): 
+    total = 1
+    for x in range(1, num + 1):
+        total *= x 
+    return total
+print(factorial(5))        
+"""
+
+"""
+3. Call your function is_empty, it takes a parameter and it checks if it is empty or not
+
+def is_empty(parameter):
+    if parameter == None:
+        raise Exception("There is no parameter")
+    else:
+        print(f"the parameter is: {parameter}")    
+    
+print(is_empty(""))
+print(is_empty(1))
+
+"""
+
+"""
+4. Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+
+import math
+
+def calculate_mean(lst):
+    result = sum(lst) / len(lst)
+    return result    
+print(calculate_mean([1,2,3,4,5,6,7]))
+
+def calculate_median(num):
+    sorted_numbers = sorted(num)
+    n = len(sorted_numbers)
+    mid = n // 2
+
+    if n % 2 == 0:
+        return (sorted_numbers[mid - 1] + sorted_numbers[mid]) / 2
+    else:
+        return sorted_numbers[mid]
+    
+
+def calculate_mode(numbers):
+    frequency = {}
+    for num in numbers:
+        frequency[num] = frequency.get(num, 0) + 1
+
+    max_count = max(frequency.values())
+    modes = [key for key, value in frequency.items() if value == max_count]
+
+    return modes
+
+def calculate_range(numbers):
+     return max(numbers) - min(numbers)
+ 
+
+def calculate_variance(numbers):
+    mean = calculate_mean(num)
+    return sum((x - mean) ** 2 for x in numbers) / len(numbers)
+
+
+def calculate_std(numbers):
+    variance = calculate_variance(numbers)
+    return math.sqrt(variance)
+
+"""
