@@ -45,11 +45,53 @@ print(rgb_color_gen())
 Exercises: Level 2 
 1. Write a function list_of_hexa_colors which returns any number of hexadecimal colors in an array (six hexadecimal numbers written after #. Hexadecimal numeral system is made out of 16 symbols, 0-9 and first 6 letters of the alphabet, a-f. Check the task 6 for output examples).
 
-"""
 
 def list_of_hexa_colors(num):
-    letters = ["a", "b", "c", "d", "e", "f"]
-    characters = letters + string.digits
-    for hex in range(num):
+    characters = string.hexdigits 
+    colors = []
+    for _ in range(num):
         hex = ''.join(random.choices(characters, k = 6))
-        print(f"")
+        colors.append(f"#{hex}")
+    return colors
+print(list_of_hexa_colors(3))
+
+"""
+
+"""
+2. Write a function list_of_rgb_colors which returns any number of RGB colors in an array.
+
+def rgb_color_gen(num):
+    colors = []
+    for _ in range(num):
+        first_digit = random.randrange(0, 255)
+        second_digit = random.randrange(0, 255)
+        third_digit = random.randrange(0, 255)
+        colors.append(f"rgb({first_digit}, {second_digit}, {third_digit})")
+    return colors 
+
+print(rgb_color_gen(3))
+
+"""
+
+"""
+3. Write a function generate_colors which can generate any number of hexa or rgb colors.
+
+def generate_colors(type, num):
+    if type == "hexa":
+        characters = string.hexdigits 
+        colors_hexa = []
+        for _ in range(num):
+            hex = ''.join(random.choices(characters, k = 6))
+            colors_hexa.append(f"#{hex}")
+        return colors_hexa
+    elif type == "rgb":
+        colors_rgb = []
+        for _ in range(num):
+            first_digit = random.randrange(0, 255)
+            second_digit = random.randrange(0, 255)
+            third_digit = random.randrange(0, 255)
+            colors_rgb.append(f"rgb({first_digit}, {second_digit}, {third_digit})")
+        return colors_rgb         
+print(generate_colors("rgb", 3))
+"""
+
